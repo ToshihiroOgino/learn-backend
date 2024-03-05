@@ -17,9 +17,8 @@ export class BooksService {
 
   async create(data: NewBookInput): Promise<Book> {
     const id = Math.random().toString(36).substring(2);
-    const title = data.title;
-    const pages = data.pages;
-    const book = { id, title } as Book;
+    const { title, pages, authorId, published } = data;
+    const book = { id, title, pages, authorId, published } as Book;
     this.books.push(book);
     return book as any;
   }

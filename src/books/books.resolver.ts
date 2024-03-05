@@ -41,10 +41,13 @@ export class BooksResolver {
     return book;
   }
 
-  @ResolveField('author', () => Author)
+  @ResolveField('author', () => Author, { nullable: true })
   async getAuthor(@Parent() book: Book) {
     const { authorId } = book;
-    console.log(`getAuthor() ${authorId}`);
+
+    if (authorId == null) {
+      return null;
+    }
     const author = await this.authorsService.getOneById(authorId);
     return author;
   }

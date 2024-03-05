@@ -3,11 +3,14 @@ import { Field, InputType, Int } from '@nestjs/graphql';
 @InputType()
 export class NewBookInput {
   @Field()
-  public title: string;
+  title: string;
 
   @Field((type) => Int, { nullable: true })
-  public pages?: number;
+  pages?: number;
 
   @Field({ nullable: true })
-  public authorId: string;
+  authorId?: string;
+
+  @Field({ nullable: true })
+  published?: Date;
 }
