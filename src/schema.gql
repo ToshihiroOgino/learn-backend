@@ -8,14 +8,14 @@ type Book {
   title: String!
   pages: Int
   authorId: String
-  published: DateTime
+  published: JSON
   author: Author
 }
 
 """
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
-scalar DateTime
+scalar JSON
 
 """book author"""
 type Author {
@@ -39,5 +39,5 @@ input NewBookInput {
   title: String!
   pages: Int
   authorId: String
-  published: DateTime
+  published: JSON
 }
