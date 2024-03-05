@@ -44,6 +44,7 @@ export class BooksResolver {
   @ResolveField('author', () => Author)
   async getAuthor(@Parent() book: Book) {
     const { authorId } = book;
+    console.log(`getAuthor() ${authorId}`);
     const author = await this.authorsService.getOneById(authorId);
     return author;
   }

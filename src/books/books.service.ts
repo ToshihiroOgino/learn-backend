@@ -7,10 +7,12 @@ export class BooksService {
   private books: Array<Book>;
 
   constructor() {
-    const id = 'id_hoge';
-    const title = 'aaa';
-    const authorId = 'first_id';
-    this.books = [{ id, title, authorId } as Book];
+    this.createDummy();
+  }
+
+  private createDummy() {
+    const book = Book.createDummy();
+    this.books = [book];
   }
 
   async create(data: NewBookInput): Promise<Book> {

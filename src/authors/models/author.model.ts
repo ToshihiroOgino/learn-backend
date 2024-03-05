@@ -8,4 +8,7 @@ export class Author {
 
   @Field()
   name: string;
+
+  @Field(() => [Book])
+  books: Book[];
 }
