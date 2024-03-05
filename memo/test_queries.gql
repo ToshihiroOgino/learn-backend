@@ -1,7 +1,12 @@
 mutation TestAdd {
-  addBook(newBookData: { title: "titleeee" }) {
+  addBook(newBookData: { title: "titleeee", published: "2024-03-25" }) {
     id
     title
+    pages
+    author {
+      name
+    }
+    published
   }
 }
 
@@ -18,7 +23,7 @@ query CheckResult {
   allBooks {
     ...bookFields
   }
-  allAuthors{
+  allAuthors {
     ...authorFields
   }
 }
@@ -33,7 +38,7 @@ fragment bookFields on Book {
 fragment authorFields on Author {
   id
   name
-    books{
-      title
-    }
+  books {
+    title
+  }
 }

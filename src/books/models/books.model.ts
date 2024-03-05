@@ -1,4 +1,5 @@
 import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import GraphQLJSON from 'graphql-type-json';
 
 @ObjectType({ description: 'book' })
 export class Book {
@@ -14,7 +15,7 @@ export class Book {
   @Field({ nullable: true })
   authorId?: string;
 
-  @Field({ nullable: true })
+  @Field(() => GraphQLJSON, { nullable: true })
   published?: Date;
 
   public static createDummy(): Book {
