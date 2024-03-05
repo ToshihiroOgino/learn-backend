@@ -1,5 +1,4 @@
 import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
-import { Author } from 'src/authors/models/author.model';
 
 @ObjectType({ description: 'book' })
 export class Book {
@@ -10,8 +9,15 @@ export class Book {
   title: string;
 
   @Field(() => Int, { nullable: true })
-  pages: number;
+  pages?: number;
 
   @Field({ nullable: true })
   authorId?: string;
+
+  public static createDummy(): Book {
+    const id = 'id_hoge';
+    const title = 'aaa';
+    const authorId = 'first_id';
+    return { id, title, authorId } as Book;
+  }
 }

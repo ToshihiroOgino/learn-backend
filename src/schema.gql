@@ -4,6 +4,7 @@
 
 """book author"""
 type Author {
+  books: [Book!]!
   id: ID!
   name: String!
 }
@@ -28,6 +29,7 @@ input NewBookInput {
 }
 
 type Query {
+  allAuthors: [Author!]!
   allBooks: [Book!]!
   author(id: String!): Author!
   book(id: String!): Book!

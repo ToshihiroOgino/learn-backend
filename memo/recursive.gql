@@ -1,0 +1,17 @@
+query Recursive {
+  book(id: "id_hoge") {
+    title
+    author {
+      name
+      books {
+        title
+        author {
+          name
+          books {
+            title
+          }
+        }
+      }
+    }
+  }
+}

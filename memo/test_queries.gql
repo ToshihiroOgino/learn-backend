@@ -1,35 +1,39 @@
-mutation TestAdd{
-  addBook(newBookData:{
-    title: "titleeee"
-  }) {
+mutation TestAdd {
+  addBook(newBookData: { title: "titleeee" }) {
     id
     title
   }
 }
 
-query GetOneBookAndAuthor{
-  book(id:"id_hoge"){
-  	...bookFields
+query GetOneBookAndAuthor {
+  book(id: "id_hoge") {
+    ...bookFields
   }
-  author(id:"first_id"){
+  author(id: "first_id") {
     ...authorFields
   }
 }
 
-query CheckResult{
-  allBooks{
-  	...bookFields
+query CheckResult {
+  allBooks {
+    ...bookFields
+  }
+  allAuthors{
+    ...authorFields
   }
 }
 
-fragment bookFields on Book{
-	id
+fragment bookFields on Book {
+  id
   title
-  author{
-		...authorFields
+  author {
+    ...authorFields
   }
 }
-fragment authorFields on Author{
+fragment authorFields on Author {
   id
   name
+    books{
+      title
+    }
 }
