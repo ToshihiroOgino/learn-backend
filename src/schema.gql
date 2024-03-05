@@ -2,20 +2,33 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-"""book author"""
-type Author {
-  books: [Book!]!
-  id: ID!
-  name: String!
-}
-
 """book"""
 type Book {
-  author: Author!
-  authorId: String
   id: ID!
-  pages: Int
   title: String!
+  pages: Int
+  authorId: String
+  published: DateTime
+  author: Author
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""book author"""
+type Author {
+  id: ID!
+  name: String!
+  books: [Book!]!
+}
+
+type Query {
+  book(id: String!): Book!
+  allBooks: [Book!]!
+  author(id: String!): Author!
+  allAuthors: [Author!]!
 }
 
 type Mutation {
@@ -23,14 +36,8 @@ type Mutation {
 }
 
 input NewBookInput {
-  authorId: String
-  pages: Int
   title: String!
-}
-
-type Query {
-  allAuthors: [Author!]!
-  allBooks: [Book!]!
-  author(id: String!): Author!
-  book(id: String!): Book!
+  pages: Int
+  authorId: String
+  published: DateTime
 }

@@ -14,6 +14,9 @@ export class Book {
   @Field({ nullable: true })
   authorId?: string;
 
+  @Field({ nullable: true })
+  published?: Date;
+
   public static createDummy(): Book {
     const id = 'id_hoge';
     const title = 'aaa';
