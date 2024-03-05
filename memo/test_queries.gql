@@ -1,0 +1,36 @@
+# Playgroundで動作を確認するためのクエリをまとめたメモ
+mutation TestAdd{
+  addBook(newBookData:{
+    title: "titleeee"
+  }) {
+    id
+    title
+  }
+}
+
+query GetOne{
+  author(id:"first_id"){
+    id
+    name
+  }
+  book(id:"id_hoge"){
+    id
+    title
+    pages
+    author{
+      id
+      name
+    }
+  }
+}
+
+query CheckResult{
+  allBooks{
+    id
+    title
+    author{
+      id
+      name
+    }
+  }
+}
