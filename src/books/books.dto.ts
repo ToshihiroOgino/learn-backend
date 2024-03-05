@@ -1,17 +1,16 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
-import GraphQLJSON from 'graphql-type-json';
 
 @InputType()
 export class NewBookInput {
   @Field()
-  readonly title: string;
+  title: string;
 
   @Field((type) => Int, { nullable: true })
-  readonly pages?: number;
+  pages?: number;
 
   @Field({ nullable: true })
-  readonly authorId?: string;
+  authorId?: string;
 
-  @Field(() => GraphQLJSON, { nullable: true })
-  readonly published?: Date;
+  @Field({ nullable: true })
+  published?: Date;
 }
