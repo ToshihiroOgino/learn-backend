@@ -1,4 +1,3 @@
-# Playgroundで動作を確認するためのクエリをまとめたメモ
 mutation TestAdd{
   addBook(newBookData:{
     title: "titleeee"
@@ -8,29 +7,29 @@ mutation TestAdd{
   }
 }
 
-query GetOne{
-  author(id:"first_id"){
-    id
-    name
-  }
+query GetOneBookAndAuthor{
   book(id:"id_hoge"){
-    id
-    title
-    pages
-    author{
-      id
-      name
-    }
+  	...bookFields
+  }
+  author(id:"first_id"){
+    ...authorFields
   }
 }
 
 query CheckResult{
   allBooks{
-    id
-    title
-    author{
-      id
-      name
-    }
+  	...bookFields
   }
+}
+
+fragment bookFields on Book{
+	id
+  title
+  author{
+		...authorFields
+  }
+}
+fragment authorFields on Author{
+  id
+  name
 }
